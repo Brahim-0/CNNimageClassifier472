@@ -28,7 +28,7 @@ def check_image_sizes(directory):
 
 if __name__ == '__main__':
     # Directories containing the images
-    folders = ['/train/Happy_Cleaned', '/train/surprised_Cleaned']
+    folders = ['/train/Cleaned/Happy_Cleaned', '/train/Cleaned/surprised_Cleaned', '/train/Cleaned/Neutral_Cleaned', '/train/Cleaned/Focused_Cleaned']
 
     for folder in folders:
         # Call the function to count images per dimension
