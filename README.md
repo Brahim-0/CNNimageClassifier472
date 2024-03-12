@@ -4,6 +4,10 @@ using PyTorch that can analyze images of students in a classroom or online meeti
 categorize them into distinct states or activities. Our system will be able to analyse images in
 order to recognize four classes based on emotions.
 
+# Dataset:
+we used a relativley clean dataset available via the link below. the dataset provide a large collection of grey scaled image of the size 25x25.
+https://www.kaggle.com/datasets/vipulpisal/fer2013-updated
+
 # Scripts:
 ## Cleaning: 
 - 1 image_cleaning.py:
