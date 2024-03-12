@@ -1,4 +1,9 @@
 # CNNimageClassifier472
+The objective of this project is to develop a Deep Learning Convolutional Neural Network (CNN)
+using PyTorch that can analyze images of students in a classroom or online meeting setting and
+categorize them into distinct states or activities. Our system will be able to analyse images in
+order to recognize four classes based on emotions.
+
 # Scripts:
 ## Cleaning: 
 - 1 image_cleaning.py: Running this script will go through the data and make sure the image have the same size. the script will return an analysis if the images and their size in the dataset.
