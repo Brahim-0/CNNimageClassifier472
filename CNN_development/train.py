@@ -3,10 +3,10 @@ import torch.nn as nn
 import torch.optim as optim
 from torch.utils.data import DataLoader, Dataset
 from load_data import load_data
-from CNN_def import EmotionCNN4
+from CNN_def import EmotionCNN7
 
 # Initialize model, loss function, and optimizer
-model = EmotionCNN4()
+model = EmotionCNN7()
 criterion = nn.CrossEntropyLoss()
 optimizer = optim.Adam(model.parameters(), lr=0.001)
 
@@ -15,7 +15,7 @@ train_loader, val_loader, test_loader = load_data()
 
 # Training loop
 best_val_loss = float('inf')
-for epoch in range(35):  # 10 epochs
+for epoch in range(20):  # N epochs
     model.train()
     train_loss = 0.0  # Initialize train loss
 
@@ -51,8 +51,8 @@ for epoch in range(35):  # 10 epochs
         best_val_loss = val_loss
         torch.save(model.state_dict(), 'best_model.pt')
 
-    # check for early stopping
-    if val_loss > 1.2 * best_val_loss:
+    # check for early stopping (if the validation loss has increased by 30% compared to the lowest val loss value recorded before)
+    if val_loss > 1.3 * best_val_loss:
         print("\ntraining was halt as the validation loss is increasing")
         break
 

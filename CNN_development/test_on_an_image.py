@@ -2,7 +2,6 @@ import torch
 from PIL import Image
 from torchvision.datasets import ImageFolder
 from torchvision.transforms import ToTensor
-
 from CNN_def import EmotionCNN4
 
 # Individual image prediction function
@@ -24,6 +23,6 @@ dataset = ImageFolder(data_dir, transform=ToTensor())
 
 # Test the best model
 model = EmotionCNN4()
-model.load_state_dict(torch.load('best_model_E4_67.pt'))
+model.load_state_dict(torch.load('best_model_E4_63.pt'))
 model.eval()
 print(predict_emotion("brightened_1058.jpg"))
