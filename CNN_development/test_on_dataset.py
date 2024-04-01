@@ -3,17 +3,17 @@ import torch
 from torch import nn
 from load_data import load_data
 # from CNN_def import EMModel
-from CNN_def import EmotionCNN4
+from CNN_def import EmotionCNN7
 
 
-model = EmotionCNN4()
+model = EmotionCNN7()
 
 # load and split images from the dataset
 train_loader, val_loader, test_loader = load_data()
 
 criterion = nn.CrossEntropyLoss()
 
-model.load_state_dict(torch.load('best_model_E4_67.pt'))
+model.load_state_dict(torch.load('best_model_E7_70. pt'))
 model.eval()
 
 # Initialize variables to store counts
