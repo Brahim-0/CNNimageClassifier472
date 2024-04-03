@@ -46,6 +46,7 @@ def plot_confusion_matrix(model, test_loader, model_name):
     plt.savefig(f'CNN_development/confusion_matrix_{model_name}.png')
     #uncomment the line below if you want to see the plot
     #plt.show()
+    print(cm)
 
 
 # Generate confusion matrices for each model
