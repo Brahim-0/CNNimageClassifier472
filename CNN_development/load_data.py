@@ -7,7 +7,7 @@ from torchvision.utils import make_grid
 
 def load_data():
     # define the dir for the dataset
-    data_dir = './dataset'
+    data_dir = 'CNN_development\dataset'
     dataset = ImageFolder(data_dir, transform=ToTensor())
 
     # Set random seed for reproducibility
@@ -28,7 +28,7 @@ def load_data():
     return train_loader, val_loader, test_loader
 
 # define the dir for the dataset
-data_dir = './dataset'
+data_dir = 'CNN_development\dataset'
 dataset = ImageFolder(data_dir, transform=ToTensor())
 def show_example(img, label):
     print('Label: ', dataset.classes[label], "("+str(label)+")")

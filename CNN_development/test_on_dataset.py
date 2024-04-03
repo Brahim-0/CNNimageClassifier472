@@ -4,7 +4,9 @@ from torch import nn
 from load_data import load_data
 # from CNN_def import EMModel
 from CNN_def import EmotionCNN7
-
+import matplotlib.pyplot as plt
+import seaborn as sns
+from sklearn.metrics import confusion_matrix
 
 model = EmotionCNN7()
 
@@ -13,7 +15,7 @@ train_loader, val_loader, test_loader = load_data()
 
 criterion = nn.CrossEntropyLoss()
 
-model.load_state_dict(torch.load('best_model_E7_70. pt'))
+model.load_state_dict(torch.load('CNN_development/best_model_E7_70.pt'))
 model.eval()
 
 # Initialize variables to store counts
@@ -26,13 +28,16 @@ correct_predictions = 0
 true_positives = np.zeros(num_classes)
 false_positives = np.zeros(num_classes)
 false_negatives = np.zeros(num_classes)
-
+# all_predictions = []
+# all_labels = []
 # Iterate through the dataset to make predictions
 for images, labels in test_loader:
     with torch.no_grad():
         outputs = model(images)
         _, predicted = torch.max(outputs, 1)
 
+        # all_predictions.extend(predicted.cpu().numpy())
+        # all_labels.extend(labels.cpu().numpy())
         # Count total samples and correct predictions for accuracy
         total_samples += labels.size(0)
         correct_predictions += (predicted == labels).sum().item()
@@ -42,6 +47,10 @@ for images, labels in test_loader:
             true_positives[i] += ((predicted == i) & (labels == i)).sum().item()
             false_positives[i] += ((predicted == i) & (labels != i)).sum().item()
             false_negatives[i] += ((predicted != i) & (labels == i)).sum().item()
+
+# cm = confusion_matrix(all_labels, all_predictions)
+
+# classes = ['happy', 'neutral', 'focused', 'surprised' ]
 
 # Calculate accuracy
 accuracy = correct_predictions / total_samples
@@ -70,3 +79,9 @@ print("Micro Recall: {:.4f}".format(micro_recall))
 print("Micro F1-score: {:.4f}".format(micro_f1))
 
 
+# plt.figure(figsize=(8, 6))
+# sns.heatmap(cm, annot=True, fmt="d", cmap="Blues", xticklabels=classes, yticklabels=classes)
+# plt.xlabel('Predicted labels')
+# plt.ylabel('True labels')
+# plt.title('Confusion Matrix')
+# plt.show()
