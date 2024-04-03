@@ -18,3 +18,13 @@ https://www.kaggle.com/datasets/vipulpisal/fer2013-updated
   Script responsible for generating the bar graph showing the number of images in each class.
 - 2 visulaization_sample_images.py:
   Script responsible for randomly selecting 25 images sample and ploting a grid for each class in the dataset.
+
+# Initil Model Development:
+- 1 load_data.py:
+  This file is used to split and load the data from the dataset folder and feed it to the training loop.
+- 2 CNN_def.py:
+contains different CNN architectures we implemented in the process of defining a model with high accuracy.
+- 3 train.py:
+  In this file we defined the loop that is responsible for training the models defined in CNN_def and generating **.pt** files.
+- 4 test_on_dataset.py and test_on_an_image.py:
+  These files are used to test the models using the test dataset or an specific image, where we feed the models the data and test their response against what we know regarding the data.
