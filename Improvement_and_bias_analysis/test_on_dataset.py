@@ -9,11 +9,11 @@ from CNN_def import EmotionCNN7
 model = EmotionCNN7()
 
 # load and split images from the dataset
-train_loader, val_loader, test_loader = load_data()
+test_loader, _ = load_data()
 
 criterion = nn.CrossEntropyLoss()
 
-model.load_state_dict(torch.load('best_model_E7_70. pt'))
+model.load_state_dict(torch.load('best_model.pt'))
 model.eval()
 
 # Initialize variables to store counts
@@ -68,5 +68,4 @@ print("Macro F1-score: {:.4f}".format(macro_f1))
 print("Micro Precision: {:.4f}".format(micro_precision))
 print("Micro Recall: {:.4f}".format(micro_recall))
 print("Micro F1-score: {:.4f}".format(micro_f1))
-
 

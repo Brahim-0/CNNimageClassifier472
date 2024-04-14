@@ -14,18 +14,16 @@ def load_data():
     torch.manual_seed(42)
 
     # Define sizes for train and test splits
-    train_size = int(0.7 * len(dataset))  # 80% train
-    val_size = int(0.15 * len(dataset))  # 15% train
-    test_size = len(dataset) - train_size - val_size  # 15% test
+    train_size = int(0.8 * len(dataset))  # 80% train
+    test_size = len(dataset) - train_size  # 20% test
 
     # Split dataset into train and test
-    train_dataset, val_dataset, test_dataset = random_split(dataset, [train_size, val_size, test_size])
+    train_dataset, test_dataset = random_split(dataset, [train_size, test_size])
 
-    # Create data loaders
-    train_loader = DataLoader(train_dataset, batch_size=32, shuffle=True)
-    val_loader = DataLoader(val_dataset, batch_size=32, shuffle=False)
+    # Create data loaders for training and testing
     test_loader = DataLoader(test_dataset, batch_size=32, shuffle=False)
-    return train_loader, val_loader, test_loader
+
+    return test_loader, train_dataset
 
 # define the dir for the dataset
 data_dir = './dataset'
