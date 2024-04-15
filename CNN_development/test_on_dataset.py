@@ -13,7 +13,7 @@ train_loader, val_loader, test_loader = load_data()
 
 criterion = nn.CrossEntropyLoss()
 
-model.load_state_dict(torch.load('best_model_E7_70. pt'))
+model.load_state_dict(torch.load('best_model_E7_70.pt'))
 model.eval()
 
 # Initialize variables to store counts

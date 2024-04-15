@@ -1,6 +1,7 @@
 import numpy as np
 import torch
 from torch import nn
+from Improvement_and_bias_analysis.load_bias_dataset import load_bias_dataset
 from load_data import load_data
 # from CNN_def import EMModel
 from CNN_def import EmotionCNN7
@@ -8,12 +9,19 @@ from CNN_def import EmotionCNN7
 
 model = EmotionCNN7()
 
-# load and split images from the dataset
-test_loader, _ = load_data()
+Bias_testing = True     # change this depending on the task
 
+if Bias_testing:
+    # load and split images from the dataset
+    test_loader = load_bias_dataset()
+else:
+    # load and split images from the dataset
+    test_loader, _ = load_data()
+
+# set the loss function
 criterion = nn.CrossEntropyLoss()
 
-model.load_state_dict(torch.load('best_model.pt'))
+model.load_state_dict(torch.load('best_model_E7_70.pt'))
 model.eval()
 
 # Initialize variables to store counts
