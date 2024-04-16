@@ -9,7 +9,7 @@ from CNN_def import EmotionCNN7
 
 model = EmotionCNN7()
 
-Bias_testing = True     # change this depending on the task
+Bias_testing = False     # change this depending on the task
 
 if Bias_testing:
     # load and split images from the dataset
@@ -21,7 +21,7 @@ else:
 # set the loss function
 criterion = nn.CrossEntropyLoss()
 
-model.load_state_dict(torch.load('best_model_E7_70.pt'))
+model.load_state_dict(torch.load('best_model_kfold_81.pt'))
 model.eval()
 
 # Initialize variables to store counts
