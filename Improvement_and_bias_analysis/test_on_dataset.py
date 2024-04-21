@@ -1,11 +1,11 @@
 import numpy as np
 import torch
 from torch import nn
-from Improvement_and_bias_analysis.load_bias_dataset import load_bias_dataset
+from load_bias_dataset import load_bias_dataset
 from load_data import load_data
 # from CNN_def import EMModel
 from CNN_def import EmotionCNN7
-
+from confusion import plot_confusion_matrix
 
 model = EmotionCNN7()
 
@@ -77,3 +77,5 @@ print("Micro Precision: {:.4f}".format(micro_precision))
 print("Micro Recall: {:.4f}".format(micro_recall))
 print("Micro F1-score: {:.4f}".format(micro_f1))
 
+
+plot_confusion_matrix(model, test_loader, "EmotionCNN7", num_classes)
